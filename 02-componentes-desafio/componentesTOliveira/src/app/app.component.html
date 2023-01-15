@@ -1,6 +1,25 @@
 
 <router-outlet>
   <app-navbar></app-navbar>
-  <app-menu></app-menu>
-  <app-content></app-content>
+  <section class="">
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <app-menu></app-menu>
+        </div>
+        <div class="col-8">
+          <app-content></app-content>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="container">
+    <div class="row">
+      <div class="col-12">
+        footer content
+      </div>
+    </div>
+  </footer>
+
+
 </router-outlet>
