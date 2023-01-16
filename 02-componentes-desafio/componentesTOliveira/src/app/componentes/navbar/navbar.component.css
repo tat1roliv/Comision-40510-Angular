@@ -3,7 +3,7 @@ nav {
   -webkit-box-shadow: 0 0 15px -1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0 0 15px -1px rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 15px -1px rgba(0, 0, 0, 0.2);
-  background-color: var(--color-bg-white);
+  background-color: #fff;
 }
 
 nav img {
