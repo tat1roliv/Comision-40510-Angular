@@ -1,16 +1,17 @@
-export class Persona {
-    public nombre: string;
+export class Persona{
+    private nombre: string;
     private apellido: string;
     private edad: number;
 
-    constructor(nombre: string,apellido: string,edad: number) {
-        this.nombre = nombre; 
+    constructor(nombre: string, apellido: string, edad: number){
+        this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
     }
 
-    saludar(nombreSaludar: string){
-        return "hola," + nombreSaludar  + " soy " + this.nombre;
+    saludar(nombreASaludar: string){
+        let variable = "valor";
+        return "Hola " + nombreASaludar + ", me llamo " + this.nombre;    
     }
 
     setNombre(nombre: string): void{
@@ -25,18 +26,15 @@ export class Persona {
         this.edad = edad;
     }
 
-    getNombre(nombre: string): string{
+    getNombre(): string{
         return this.nombre;
     }
 
-    getApellido(apellido: string): string{
+    getApellido(): string{
         return this.apellido;
     }
 
-    getEdad(edad: number): number{
+    getEdad(): number{
         return this.edad;
     }
-
-
-
 }
