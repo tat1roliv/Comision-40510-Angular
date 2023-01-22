@@ -7,8 +7,9 @@ var Persona = /** @class */ (function () {
         this.apellido = apellido;
         this.edad = edad;
     }
-    Persona.prototype.saludar = function (nombreSaludar) {
-        return "hola," + nombreSaludar + " soy " + this.nombre;
+    Persona.prototype.saludar = function (nombreASaludar) {
+        var variable = "valor";
+        return "Hola " + nombreASaludar + ", me llamo " + this.nombre;
     };
     Persona.prototype.setNombre = function (nombre) {
         this.nombre = nombre;
@@ -19,13 +20,13 @@ var Persona = /** @class */ (function () {
     Persona.prototype.setEdad = function (edad) {
         this.edad = edad;
     };
-    Persona.prototype.getNombre = function (nombre) {
+    Persona.prototype.getNombre = function () {
         return this.nombre;
     };
-    Persona.prototype.getApellido = function (apellido) {
+    Persona.prototype.getApellido = function () {
         return this.apellido;
     };
-    Persona.prototype.getEdad = function (edad) {
+    Persona.prototype.getEdad = function () {
         return this.edad;
     };
     return Persona;
