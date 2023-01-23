@@ -1,0 +1,22 @@
+nav {
+  height: 65px;
+  -webkit-box-shadow: 0 0 15px -1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 15px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 15px -1px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+nav img {
+  max-width: 100%;
+  width: 100px;
+  height:auto;
+}
+
+.nav-text {
+  font-size: 13px;
+  line-height:22px;
+  font-weight:600;
+  color: #023267;
+  margin:0px!important;
+  /*ont-family:"work sans";*/
+}

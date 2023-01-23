@@ -1,0 +1,22 @@
+<h1>Angular Course</h1>
+<h2>Students List</h2>
+
+  <ul>
+    <li *ngFor="let student of studentsList" class="card card-edit my-5 bg-light">
+      <div class="row d-flex justify-content-center align-items-center p-4">
+        <img src="{{ student.photo }}" class="card-img-edit px-0" alt="user">
+        <div class="col">
+          <p class="card-text"><strong>Name:</strong> {{student.name}}</p>
+          <p class="card-text"><strong>Last name:</strong> {{student.lastName}}</p>
+        </div>
+        <div class="col">
+          <p class="card-text"><strong>Grade:</strong> {{student.grade}}</p>
+          <p class="card-text"><strong>Approved:</strong> {{student.isApproved}}</p>
+        </div>
+        <div class="col">
+          <p class="card-text"><strong>E-mail:</strong> {{student.email}}</p>
+        </div>
+      </div>
+    </li>
+  </ul>
+
