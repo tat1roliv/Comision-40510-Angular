@@ -11,7 +11,7 @@
         </div>
         <div class="col">
           <p class="card-text"><strong>Grade:</strong> {{student.grade}}</p>
-          <p class="card-text"><strong>Approved:</strong> {{student.isApproved}}</p>
+          <p class="card-text" [ngClass]="student.isApproved ? 'active' : 'inactive'"><strong>Approved:</strong> {{student.isApproved}}</p>
         </div>
         <div class="col">
           <p class="card-text"><strong>E-mail:</strong> {{student.email}}</p>
@@ -19,4 +19,13 @@
       </div>
     </li>
   </ul>
+
+
+  <h3>Admin Area</h3>
+
+ <div class="text-muted mb-5">
+  <p>API Data:</p>
+  <hr/>
+  <span class="api-data">{{ studentsList | json }}</span>
+ </div>
 

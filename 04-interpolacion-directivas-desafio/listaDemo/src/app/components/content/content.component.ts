@@ -18,8 +18,8 @@ export class ContentComponent {
     },
     {
       name: 'Tim',
-      lastName: 'Burns Lee',
-      grade: 9,
+      lastName: 'Berners-Lee',
+      grade: 10,
       isApproved: true,
       email: 'tim@coding.com',
       photo: 'https://i.pravatar.cc/150?b=',

@@ -19,3 +19,17 @@ h1{
 ul{
   list-style:none;
 }
+
+.active{
+  color:#353535
+}
+
+.inactive{
+  color: tomato;
+}
+
+.api-data{
+  font-size:10px;
+  line-height:16px;
+  font-style:italic;
+}
