@@ -1,4 +1,4 @@
 <div class="padre">
   <p>text from componente padre</p>
-  <app-componente-hijo [estudiantesHijo]="estudiantesPadre"></app-componente-hijo>
+  <app-componente-hijo [estudiantesHijo]="estudiantesPadre" (eventoSalidaEstudiante)="actualizarEstudiantesPadre($event)"></app-componente-hijo>
 <div>

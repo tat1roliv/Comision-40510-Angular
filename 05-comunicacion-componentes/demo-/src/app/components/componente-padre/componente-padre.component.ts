@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Input, Output , EventEmitter } from '@angular/core';
 import { Estudiante } from '../../models/estudiante';
 
 @Component({
@@ -9,6 +9,17 @@ import { Estudiante } from '../../models/estudiante';
 })
 export class ComponentePadreComponent {
   @Input() estudiantesPadre!: Estudiante[];
+  @Output() eventoSalidaPadre: EventEmitter<Estudiante> = new EventEmitter<Estudiante>();
 
   constructor(){}
+
+  agregarEstudiante(){
+    console.log('agregando estudiante');
+  }
+
+  actualizarEstudiantesPadre(estudiante: Estudiante){
+    console.log('agregando estudiante desde hasta componente-padre', estudiante);
+
+    this.eventoSalidaPadre.emit(estudiante);
+  }
 }

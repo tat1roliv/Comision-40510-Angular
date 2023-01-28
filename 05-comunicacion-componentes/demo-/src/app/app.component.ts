@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Estudiante } from './models/estudiante';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -36,4 +37,9 @@ export class AppComponent {
     },
 
   ]
+
+  agregarEstudiante(estudiante: Estudiante){
+    this.estudiantes.push(estudiante);
+  }
+
 }

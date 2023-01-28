@@ -8,4 +8,25 @@
       <p>Nota media: {{estudiante.notaMedia}}</p>
     </li>
   </ol>
+
+  <div class="form">
+    <div class="row">
+      <div class="col">
+        <input type="text" [(ngModel)]="nombre" placeholder="nombre" (keyup)="actualizarNombre()">
+      </div>
+      <div class="col">
+        <input type="text" [(ngModel)]="curso" placeholder="curso">
+      </div>
+      <div class="col">
+        <label for="">activo</label>
+        <input type="checkbox" [(ngModel)]="activo">
+      </div>
+      <div class="col">
+        <input type="number" [(ngModel)]="notaMedia" placeholder="nota Media">
+      </div>
+    </div>
+    <div class="row">
+      <button (click)="agregarEstudiante()">agregar Estudiante</button>
+    </div>
+  </div>
 </div>
