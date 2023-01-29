@@ -1,16 +1,25 @@
-<form class="container my-3" [formGroup]="formularioLogin">
+<form [formGroup]="formularioLogin" class="container my-3" (ngSubmit)="handleLogin()">
   <div class="mb-3">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input formControlName="correo" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <!--check-->
+    <div class="valid" *ngIf="formularioLogin.controls['correo'].touched && formularioLogin.controls['correo'].valid" >campo correcto</div>
+    <div class="invalid" *ngIf="formularioLogin.controls['correo'].touched && formularioLogin.controls['correo'].errors?.['required']" >el correo  es obligatorio</div>
+    <div class="invalid" *ngIf="formularioLogin.controls['correo'].touched && formularioLogin.controls['correo'].errors?.['pattern']">el correo tiene un formato incorrecto</div>
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input formControlName="contrasena" type="password" class="form-control" id="exampleInputPassword1">
+    <!--check-->
+    <div class="valid" *ngIf="formularioLogin.controls['contrasena'].touched && formularioLogin.controls['contrasena'].valid">campo correcto</div>
+    <div class="invalid" *ngIf="formularioLogin.controls['contrasena'].touched && formularioLogin.controls['contrasena'].errors?.['required']">contrasena es obligatorio</div>
+    <div class="invalid" *ngIf="formularioLogin.controls['contrasena'].touched && formularioLogin.controls['contrasena'].errors?.['minlength']">contrasena tiene un formato incorrecto</div>
   </div>
   <div class="mb-3 form-check">
     <input formControlName="recordarCredenciales" type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Recordar credenciales</label>
   </div>
-  <button (click)="login()" type="submit" class="btn btn-primary">Enviar</button>
+  <button type="submit" class="btn btn-primary" [disabled]="formularioLogin.invalid">Enviar</button>
+  <button type="reset" class="btn btn-secondary mx-2">Reset</button>
+
 </form>
