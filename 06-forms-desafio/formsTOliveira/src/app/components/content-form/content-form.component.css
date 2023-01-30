@@ -1,0 +1,20 @@
+.ic-dynamic-form{
+  background-color: #fff;
+  padding: 22px 8px 20px 8px!important;
+  border-radius: 0 0 8px 8px;
+}
+
+.btn {
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 8px;
+  padding: 15px 24px;
+  letter-spacing: 0.5px;
+  width: 100%;
+  background-color:#3366FF;
+  border:none;
+  color:#fff;
+}

@@ -2,7 +2,11 @@ footer {
   font-size: 16px;
   line-height:26px;
   font-weight:600;
-  color: #353535;
+  color: #fff;
   margin:0px!important;
   font-family:"work sans";
+}
+
+.bg-footer{
+  background-color: #1D2351;
 }
