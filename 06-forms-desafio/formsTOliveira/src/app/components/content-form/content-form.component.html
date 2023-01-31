@@ -1,4 +1,4 @@
-<form class="ic-dynamic-form">
+<form class="ic-dynamic-form"  (ngSubmit)="handleSubscription()">
   <div class="mb-2">
       <label class="mb-1" for="firstname-input">Name:</label>
       <input value="" type="text" id="firstname-input" name="firstname-input" class="form-control" placeholder="*Name">
@@ -12,6 +12,6 @@
       <input value="" type="text" id="email-input" name="email-input" class="form-control" placeholder="*Email">
   </div>
   <div class="mt-4 mb-2">
-      <button type="submit" class="btn w-100">Send</button>
+      <button type="submit" class="btn w-100" >Send</button>
   </div>
 </form>

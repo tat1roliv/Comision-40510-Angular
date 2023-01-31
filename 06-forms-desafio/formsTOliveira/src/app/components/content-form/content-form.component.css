@@ -18,3 +18,12 @@
   border:none;
   color:#fff;
 }
+
+.valid {
+  color:#3366FF;
+}
+
+.invalid{
+  color:tomato;
+}
+
