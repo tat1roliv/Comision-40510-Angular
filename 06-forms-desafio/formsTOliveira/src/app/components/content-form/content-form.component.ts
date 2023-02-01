@@ -12,8 +12,8 @@ export class ContentFormComponent {
 
   constructor(){
     let controles: any = {
-      name_: new FormControl('', [ Validators.required  ]),
-      lastName_: new FormControl('', [ Validators.required  ]),
+      name_: new FormControl('', [ Validators.required , Validators.minLength(2) ]),
+      lastName_: new FormControl('', [ Validators.required, Validators.minLength(3)   ]),
       email_: new FormControl('', [ Validators.required , Validators.email  ]),
     }
 
