@@ -1,4 +1,4 @@
-export interface Curso{
+export interface Curso {
     nombre: string;
     comision: string;
     profesor: string;
