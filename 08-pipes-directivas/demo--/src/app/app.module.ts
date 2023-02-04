@@ -6,12 +6,16 @@ import { MaterialComponent } from './components/material/material.component';
 import { MaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditarCursoDialogComponent } from './components/editar-curso-dialog/editar-curso-dialog.component';
+import { FormatoFechaPipe } from './pipes/formato-fecha.pipe';
+import { BooleanoATextoPipe } from './pipes/booleano-a-texto.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MaterialComponent,
-    EditarCursoDialogComponent
+    EditarCursoDialogComponent,
+    FormatoFechaPipe,
+    BooleanoATextoPipe
   ],
   imports: [
     BrowserModule,
