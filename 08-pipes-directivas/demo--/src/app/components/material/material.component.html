@@ -35,7 +35,9 @@
   <!-- col fecha fim -->
   <ng-container matColumnDef="inscripcionAbierta">
     <th mat-header-cell *matHeaderCellDef>Inscripciones abiertas</th>
-    <td mat-cell *matCellDef="let element">{{ element.inscripcionAbierta | booleanoATexto: 'si' : 'no'}} </td>
+    <td mat-cell *matCellDef="let element" >
+      <div [appBooleanoEstilo]="element.inscripcionAbierta">{{ element.inscripcionAbierta | booleanoATexto: 'si' : 'no'}}</div>
+    </td>
   </ng-container>
 
   <!-- col acciones -->
@@ -71,7 +73,8 @@
         </mat-card-header>
         <img mat-card-image src="https://parentesis.com/imagesPosts/coder00.jpg" class="card-img" alt="curso image">
         <mat-card-content>
-          <p>impartido por {{ curso.profesor }}</p>
+          <p>impartido por {{ curso.profesor.nombre }}</p>
+          <p [appBooleanoEstilo]="curso.inscripcionAbierta"> {{ curso.inscripcionAbierta | booleanoATexto: 'inscripciones abiertas' : 'inscripciones cerradas' }}</p>
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-raised-button color="primary" (click)="abrirModal(curso)">
