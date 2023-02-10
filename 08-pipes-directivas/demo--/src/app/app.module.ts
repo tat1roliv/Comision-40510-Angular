@@ -9,6 +9,7 @@ import { EditarCursoDialogComponent } from './components/editar-curso-dialog/edi
 import { FormatoFechaPipe } from './pipes/formato-fecha.pipe';
 import { BooleanoATextoPipe } from './pipes/booleano-a-texto.pipe';
 import { BooleanoEstiloDirective } from './directives/booleano-estilo.directive';
+import { FiltroCursosPipe } from './pipes/filtro-cursos.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BooleanoEstiloDirective } from './directives/booleano-estilo.directive'
     EditarCursoDialogComponent,
     FormatoFechaPipe,
     BooleanoATextoPipe,
-    BooleanoEstiloDirective
+    BooleanoEstiloDirective,
+    FiltroCursosPipe
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { BooleanoEstiloDirective } from './directives/booleano-estilo.directive'
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

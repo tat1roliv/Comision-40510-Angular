@@ -12,6 +12,7 @@ import { EditarCursoDialogComponent } from '../editar-curso-dialog/editar-curso-
   styleUrls: ['./material.component.css']
 })
 export class MaterialComponent {
+  filtro!: string;
 
   cursos: Curso[] = [
     {

@@ -63,9 +63,18 @@
 
 <h4>cards en angular material</h4>
 
+<div class="row">
+  <mat-form-field>
+    <mat-label>
+       Filtrar cursos
+    </mat-label>
+    <input type="text" matInput [(ngModel)]="filtro">
+  </mat-form-field>
+</div>
+
 <div class="container">
   <div class="row">
-    <div class="col" *ngFor="let curso of cursos">
+    <div class="col" *ngFor="let curso of cursos | filtroCursos: filtro" >
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{ curso.nombre }}</mat-card-title>
