@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./tabla-cursos.component.css']
 })
 export class TablaCursosComponent implements OnInit {
-  //cursos!: Curso[];
+  cursos!: Curso[];
 
   dataSource!: MatTableDataSource<Curso> ;
 
@@ -24,6 +24,8 @@ export class TablaCursosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Curso>(this.cursoService.obtenerCursos());
+    this.cursos = this.cursoService.obtenerCursos();
+    this.dataSource = new MatTableDataSource<Curso>(this.cursos);
   }
+
 }
