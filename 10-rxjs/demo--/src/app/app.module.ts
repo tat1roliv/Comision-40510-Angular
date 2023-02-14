@@ -12,7 +12,7 @@ import { CursoAlphaService } from './services/curso-alpha.service';
 import { cursos } from './services/cursos.data';
 
 import { env } from 'src/enviroment/enviroment';
-import { config, token } from './config';
+//import { config, token } from './config';
 
 @NgModule({
   declarations: [
@@ -29,32 +29,6 @@ import { config, token } from './config';
     FormsModule,
   ],
   providers: [
-    //CursoService,
-
-    //vai usar a instancia de existing //singleton
-    //{ provide: CursoService, useExisting: CursoAlphaService },
-
-    //cria outra instancia de alpha service
-    //{ provide: CursoService, useClass: CursoAlphaService }
-
-    //{provide: CursoService, useValue: cursos}
-
-    {
-      provide: CursoService, useFactory: () => {
-
-        if(env.utilizarServicioAlpha == 'Alpha'){
-          return new CursoAlphaService();
-        }else if(env.utilizarServicioAlpha == 'Legacy'){
-          return cursos;
-        }else{
-          return new CursoService();
-        }
-
-      }
-
-    },
-
-    { provide: token, useValue: config }
   ],
   bootstrap: [AppComponent]
 })
