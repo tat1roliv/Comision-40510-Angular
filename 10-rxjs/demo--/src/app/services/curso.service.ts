@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Curso } from '../models/curso';
 
 @Injectable({
@@ -59,6 +60,31 @@ export class CursoService {
 
   constructor() { }
 
+  obtenerCursosObservable(): Observable<Curso[]>{
+    return new Observable<Curso[]>((suscriptor) => {
+      suscriptor.next(this.cursos);
+
+           setTimeout(()=>{
+           let c: Curso = {
+           nombre: 'Angular Avanzando - Desde el Observable',
+           comision: '34022',
+           fechaInicio: new Date(),
+           fechaFin: new Date(),
+           inscripcionAbierta: true,
+           profesor: {
+             nombre: 'Ulises',
+             correo: 'ulises@gmail.com',
+             fechaRegistro: new Date()
+           }
+         };
+         this.cursos.push(c);
+         suscriptor.next(this.cursos);
+       }, 2000);
+
+    })
+  }
+
+/*
   obtenerCursosPromise(): Promise<Curso[]>{
     return new Promise((resolve, reject) => {
       if(this.cursos.length > 0){
@@ -73,7 +99,7 @@ export class CursoService {
       }
     });
   }
-
+*/
 
 
   agregarCurso(curso: Curso){

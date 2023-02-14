@@ -9,7 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./tabla-cursos.component.css']
 })
 export class TablaCursosComponent implements OnInit {
-  cursos!: Curso[];
+  //cursos!: Curso[];
 
   dataSource!: MatTableDataSource<Curso> ;
 
@@ -25,7 +25,13 @@ export class TablaCursosComponent implements OnInit {
 
   ngOnInit(): void {
     //this.cursos = this.cursoService.obtenerCursos();
-    this.dataSource = new MatTableDataSource<Curso>(this.cursos);
-  }
-
+    console.log("instanciando mattabledatasource");
+    this.dataSource = new MatTableDataSource<Curso>();
+    this.cursoService.obtenerCursosObservable().subscribe((cursos: Curso[])=> {
+      console.log("agregando datos al mattabledatasource");
+      this.dataSource.data = cursos;
+    })
+    console.log("last line ng oninit")
+  };
+  
 }
