@@ -1,36 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
-import { OnInit } from '@angular/core';
-
 
 @Component({
   selector: 'app-lista-cursos',
   templateUrl: './lista-cursos.component.html',
   styleUrls: ['./lista-cursos.component.css']
 })
-export class ListaCursosComponent implements OnInit {
-
+export class ListaCursosComponent implements OnInit{
   cursos!: Curso[];
+  cursos$!: Observable<Curso[]>;
 
   constructor(
     private cursoService: CursoService
-  ){
-    //this.cursos = cursoService.obtenerCursos();
-    //console.log("datos lista cursos", cursoService.obtenerCursos())
-  }
+  ){}
 
-  ngOnInit(): void {
-    console.log("passo 1");
-    /*
-     this.cursoService.obtenerCursosPromise().then((cursos: Curso[])=>{
-    
-      console.log("passo 2");
-      this.cursos = cursos;
-     }).catch((error: any) => {
-      console.log('error en el promise', error)
-     });
-     console.log("passo 3")*/
-  }
+  ngOnInit() {
+    console.log("Paso 1");
+    // this.cursoService.obtenerCursosPromise().then((cursos: Curso[])=>{
+    //   console.log("Paso 2");
+    //   this.cursos = cursos;
+    // }).catch((error: any) => {
+    //   console.log("Hubo un error en el Promise", error);
+    // });
+    // console.log("Paso 3");
+    this.cursos$ = this.cursoService.obtenerCursosObservable();
 
+  }
 }
