@@ -8,17 +8,13 @@ import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.com
 import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
 
 import { CursoService } from './services/curso.service';
-import { CursoAlphaService } from './services/curso-alpha.service';
-import { cursos } from './services/cursos.data';
 
-import { env } from 'src/enviroment/enviroment';
-//import { config, token } from './config';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaCursosComponent,
-    TablaCursosComponent,
+    TablaCursosComponent
   ],
   imports: [
     BrowserModule,

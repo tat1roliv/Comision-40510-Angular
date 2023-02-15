@@ -10,8 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./tabla-cursos.component.css']
 })
 export class TablaCursosComponent implements OnInit, OnDestroy {
-  //cursos!: Curso[];
-
+ 
   dataSource!: MatTableDataSource<Curso> ;
   suscripcion!: Subscription;
 
@@ -19,29 +18,18 @@ export class TablaCursosComponent implements OnInit, OnDestroy {
 
   constructor(
     private cursoService: CursoService
-  ){
-    //this.cursos = cursoService.obtenerCursos();
-    //this.dataSource = new MatTableDataSource<Curso>(this.cursos);
-    //console.log("datos tabla cursos", cursoService.obtenerCursos())
-  }
+  ){ }
 
   ngOnInit(): void {
-    //this.cursos = this.cursoService.obtenerCursos();
-    console.log("instanciando mattabledatasource");
     this.dataSource = new MatTableDataSource<Curso>();
-
-    this.suscripcion = this.cursoService.obtenerCursosObservable().subscribe((cursos: Curso[])=> {
-      console.log("agregando datos al mattabledatasource");
+    this.suscripcion = this.cursoService.obtenerCursosObservable().subscribe((cursos: Curso[])=> {   
       this.dataSource.data = cursos;
     });
-
-    console.log("last line ng oninit");
-  
   };
 
   ngOnDestroy(): void {
     this.suscripcion.unsubscribe();
-
   }
 
+  
 }
