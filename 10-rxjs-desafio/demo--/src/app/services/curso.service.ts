@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Curso } from '../models/curso';
+import { of , from , filter} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -61,13 +63,21 @@ export class CursoService {
   private cursos$!: BehaviorSubject<Curso[]>;
 
   constructor() {
-    this.cursos$ = new BehaviorSubject(this.cursos);
-    }
+    //observable/subject
+    this.cursos$ = new BehaviorSubject(this.cursos); 
+    //filter
+    from(this.cursos).pipe(
+      filter((curso: Curso) => curso.comision === '49536')
+    ).subscribe((curso: Curso) => console.log(' from pipe curso', curso));
 
+  }
+
+  
   obtenerCursosObservable(): Observable<Curso[]>{
     return this.cursos$.asObservable();
   }
 
+  
   obtenerCursosPromise(): Promise<Curso[]>{
     return new Promise((resolve, reject) => {
       if(this.cursos.length > 0){

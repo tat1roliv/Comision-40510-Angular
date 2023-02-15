@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(
     private cursoService: CursoService,
   ) { 
-    
+
   }
 
   agregarCurso(){
@@ -32,5 +32,6 @@ export class AppComponent {
     };
     this.cursoService.agregarCurso(c);
   }
+ 
 
 }
