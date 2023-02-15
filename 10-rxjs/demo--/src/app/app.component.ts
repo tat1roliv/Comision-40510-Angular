@@ -35,7 +35,7 @@ export class AppComponent {
 
   agregarCurso(){
     let c: Curso = {
-      nombre: 'Angular Avanzando',
+      nombre: 'Angular app component',
       comision: '34022',
       fechaInicio: new Date(),
       fechaFin: new Date(),

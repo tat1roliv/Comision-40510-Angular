@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { Curso } from 'src/app/models/curso';
 import { CursoService } from 'src/app/services/curso.service';
 
@@ -8,9 +8,11 @@ import { CursoService } from 'src/app/services/curso.service';
   templateUrl: './lista-cursos.component.html',
   styleUrls: ['./lista-cursos.component.css']
 })
-export class ListaCursosComponent implements OnInit{
+export class ListaCursosComponent implements OnInit, OnDestroy{
   cursos!: Curso[];
   cursos$!: Observable<Curso[]>;
+
+  suscripcion!: Subscription;
 
   constructor(
     private cursoService: CursoService
@@ -25,7 +27,21 @@ export class ListaCursosComponent implements OnInit{
     //   console.log("Hubo un error en el Promise", error);
     // });
     // console.log("Paso 3");
+
+
     this.cursos$ = this.cursoService.obtenerCursosObservable();
 
+    this.suscripcion = this.cursos$.subscribe((cursos: Curso[])=> {
+      this.cursos = cursos;
+    });
+
+
   }
+  ngOnDestroy() {
+       this.suscripcion.unsubscribe();
+
+  }
+
+
 }
+
