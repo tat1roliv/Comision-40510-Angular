@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of , from , filter } from 'rxjs';
+import { of , from , filter , map } from 'rxjs';
 import { Curso } from './models/curso';
 
 @Component({
@@ -58,6 +58,14 @@ export class AppComponent {
     console.log("from 'from'/rxjs", cursos));
   }
 */
+
+//map
+of(this.cursos).pipe(
+  map((cursos: Curso[]) => {
+    return cursos.filter((curso: Curso) => curso.nombre == "React")
+  })
+).subscribe((cursos) =>
+    console.log("from 'of'/rxjs MAP", cursos));
 
 //filter/rxjs
 from(this.cursos).pipe(
