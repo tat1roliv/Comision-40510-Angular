@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { of , from , filter , map } from 'rxjs';
+import { of , from , filter , map, mergeMap, interval } from 'rxjs';
 import { Curso } from './models/curso';
 
 @Component({
@@ -50,6 +50,8 @@ export class AppComponent {
   ];
 
   constructor(){
+
+//of x from
 /*
     of(this.cursos).subscribe((cursos) =>
     console.log("from 'of'/rxjs", cursos));
@@ -59,7 +61,9 @@ export class AppComponent {
   }
 */
 
+
 //map
+/*
 of(this.cursos).pipe(
   map((cursos: Curso[]) => {
     return cursos.filter((curso: Curso) => curso.nombre == "React")
@@ -67,10 +71,29 @@ of(this.cursos).pipe(
 ).subscribe((cursos) =>
     console.log("from 'of'/rxjs MAP", cursos));
 
+*/
+
+//mergeMap
+of(this.cursos).pipe(
+  mergeMap((cursos: Curso[]) => {
+    return interval(1000).pipe(
+      map((i => {
+        //return i + cursos[i].nombre
+        return {
+          nombre: `${cursos[i].nombre} - ${i}`,
+          comision: cursos[i].comision,
+          profesor: cursos[i].profesor
+        }
+      })));
+  })
+).subscribe((datos) => console.log('using mergeMap', datos))
+
+
 //filter/rxjs
 from(this.cursos).pipe(
   filter((curso: Curso) => curso.nombre === "Angular")
   ).subscribe((curso: Curso) => console.log(curso))
 }
+
 
 }
