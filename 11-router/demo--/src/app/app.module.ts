@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.component';
 import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { CursoService } from './services/curso.service';
 import { CursoAlphaService } from './services/curso-alpha.service';
 import { cursos } from './services/cursos.data';
@@ -31,6 +33,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
     FormsModule,
     ReactiveFormsModule,
     FormsModule,
+    AppRoutingModule
   ],
   providers: [
   ],
