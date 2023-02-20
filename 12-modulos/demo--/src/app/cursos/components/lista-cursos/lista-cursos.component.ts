@@ -1,45 +1,35 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Curso } from 'src/app/models/curso';
-import { CursoService } from 'src/app/services/curso.service';
+import { CursosService } from '../../services/cursos.service';
+
 
 @Component({
   selector: 'app-lista-cursos',
   templateUrl: './lista-cursos.component.html',
   styleUrls: ['./lista-cursos.component.css']
 })
-export class ListaCursosComponent implements OnInit, OnDestroy{
+
+export class ListaCursosComponent implements OnInit{
   cursos!: Curso[];
   cursos$!: Observable<Curso[]>;
 
-  suscripcion!: Subscription;
-
   constructor(
-    private cursoService: CursoService
+    private cursoService: CursosService,
+    private router: Router
   ){}
 
   ngOnInit() {
-    console.log("Paso 1");
-    // this.cursoService.obtenerCursosPromise().then((cursos: Curso[])=>{
-    //   console.log("Paso 2");
-    //   this.cursos = cursos;
-    // }).catch((error: any) => {
-    //   console.log("Hubo un error en el Promise", error);
-    // });
-    // console.log("Paso 3");
-
-
-    this.cursos$ = this.cursoService.obtenerCursosObservable();
-
-    this.suscripcion = this.cursos$.subscribe((cursos: Curso[])=> {
-      this.cursos = cursos;
-    });
-
-
+    this.cursos$ = this.cursoService.obtenerCursos();
   }
-  ngOnDestroy() {
-       this.suscripcion.unsubscribe();
 
+  eliminarCurso(curso: Curso){
+    this.cursoService.eliminarCurso(curso);
+  }
+
+  redirigirEditarCurso(curso: Curso){
+    this.router.navigate(['cursos/editar', curso]);
   }
 
 
