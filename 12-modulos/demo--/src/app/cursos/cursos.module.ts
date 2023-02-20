@@ -6,7 +6,7 @@ import { ListaCursosComponent } from './components/lista-cursos/lista-cursos.com
 import { EditarCursoComponent } from './components/editar-curso/editar-curso.component';
 import { MaterialModule } from '../material.module';
 import { CursosRountingModule } from './cursos-routing.module';
-//import { CursosService } from './services/cursos.service';
+import { CursosService } from './services/cursos.service';
 //import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -28,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CursosRountingModule
   ],
   providers: [
-    //CursosService
+    CursosService
   ]
 })
 export class CursosModule { }

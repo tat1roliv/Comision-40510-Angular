@@ -28,12 +28,13 @@ import { CursosModule } from './cursos/cursos.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    CursosModule,
     MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    FormsModule,
+    //FormsModule,
+    //ReactiveFormsModule,
+    //FormsModule,
     AppRoutingModule,
-    CursosModule 
+
   ],
   providers: [
   ],
