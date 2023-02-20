@@ -15,7 +15,7 @@ export class CursosService {
       },
       fechaInicio: new Date(2023, 0, 1, 20, 30, 0),
       fechaFin: new Date(2023, 0, 31, 20, 30, 0),
-      inscripcionAbierta: true
+      inscripcionAbierta: true,
     },
     {
       nombre: 'Vue',
@@ -27,7 +27,7 @@ export class CursosService {
       },
       fechaInicio: new Date(2023, 1, 1, 20, 30, 0),
       fechaFin: new Date(2023, 1, 31, 20, 30, 0),
-      inscripcionAbierta: false
+      inscripcionAbierta: true,
     },
     {
       nombre: 'NodeJS',
@@ -39,7 +39,7 @@ export class CursosService {
       },
       fechaInicio: new Date(2023, 2, 1, 20, 30, 0),
       fechaFin: new Date(2023, 2, 31, 20, 30, 0),
-      inscripcionAbierta: true
+      inscripcionAbierta: true,
     },
     {
       nombre: 'React',
@@ -51,7 +51,7 @@ export class CursosService {
       },
       fechaInicio: new Date(2023, 3, 1, 20, 30, 0),
       fechaFin: new Date(2023, 3, 31, 20, 30, 0),
-      inscripcionAbierta: false
+      inscripcionAbierta: false,
     }
   ];
   private cursos$: BehaviorSubject<Curso[]>;
