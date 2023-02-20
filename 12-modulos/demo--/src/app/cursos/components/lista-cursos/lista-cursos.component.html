@@ -1,6 +1,6 @@
 <h4>lista cursos</h4>
 
-<p>{{cursos$ | async | json }}</p>
+<!--p>{{cursos$ | async | json }}</!--p-->
 
 <div class="container">
   <div class="row">
@@ -16,10 +16,10 @@
                   <p>{{ curso.inscripcionAbierta }}</p>
               </mat-card-content>
               <mat-card-actions align="end">
-                  <button mat-raised-button color="primary">
+                  <button mat-raised-button color="primary" (click)="redirigirEditarCurso(curso)">
                       Editar
                   </button>
-                  <button mat-button color="warn">
+                  <button mat-button color="warn" (click)="eliminarCurso(curso)">
                       Eliminar
                   </button>
               </mat-card-actions>
