@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Curso } from 'src/app/models/curso';
+import { Sesion } from 'src/app/models/sesion';
 import { CursosService } from '../../services/cursos.service';
+import { SesionService } from '../../../core/services/sesion.service';
 
 
 @Component({
@@ -17,11 +19,17 @@ export class ListaCursosComponent implements OnInit{
 
   constructor(
     private cursoService: CursosService,
-    private router: Router
+    private router: Router,
+    private sesion: SesionService
   ){}
 
   ngOnInit() {
     this.cursos$ = this.cursoService.obtenerCursos();
+
+    this.sesion.obtenerSesion().subscribe( (sesion: Sesion) => {
+      console.log('teste', sesion )
+    });
+    
   }
 
   eliminarCurso(curso: Curso){

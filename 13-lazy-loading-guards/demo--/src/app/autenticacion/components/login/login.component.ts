@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Usuario } from '../../../models/usuario';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -10,23 +12,25 @@ export class LoginComponent implements OnInit {
 
   formulario!: FormGroup;
 
-  constructor() {}
+  constructor(
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.formulario = new FormGroup({
         usuario: new FormControl(),
         contrasena: new FormControl(),
-        esAdmin: new FormControl()
+        esAdmin: new FormControl(false)
     });
   }
 
   login(){
-    let usuario: any = {
+    let usuario: Usuario = {
       usuario: this.formulario.value.usuario,
       contrasena: this.formulario.value.contrasena,
       esAdmin:  this.formulario.value.esAdmin
     }
-    console.log('test login', usuario)
+    this.loginService.login(usuario)
   }
 
 }
