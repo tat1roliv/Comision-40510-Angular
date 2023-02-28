@@ -1,15 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes} from '@angular/router';
 
 import { NoEncontradoComponent } from './core/components/no-encontrado/no-encontrado.component'
 import { InicioComponent} from './core/components/inicio/inicio.component';
+import { SesionGuard } from './core/guards/sesion.guard';
 
 
 const routes: Routes = [
-  { path: 'inicio', component: InicioComponent },
+  { path: 'inicio',component: InicioComponent, canActivate: [SesionGuard]},
   {
     path: 'cursos',
-    loadChildren: () => import('./cursos/cursos.module').then((modulo) => modulo.CursosModule)
+    loadChildren: () => import('./cursos/cursos.module').then((modulo) => modulo.CursosModule),
+    canLoad: [SesionGuard]
   },
   {
     path: 'auth',

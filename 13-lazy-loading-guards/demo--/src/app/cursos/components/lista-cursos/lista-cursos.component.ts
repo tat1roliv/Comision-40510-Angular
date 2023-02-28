@@ -25,14 +25,14 @@ export class ListaCursosComponent implements OnInit{
 
   ngOnInit() {
     this.cursos$ = this.cursoService.obtenerCursos();
-
+    /*
     this.sesion.obtenerSesion().subscribe( (sesion: Sesion) => {
       console.log('estado de la sesion', sesion );
       if(!sesion.sesionActiva){
         this.router.navigate(['/auth/login']);
       }
     });
-
+    */
   }
 
   eliminarCurso(curso: Curso){
