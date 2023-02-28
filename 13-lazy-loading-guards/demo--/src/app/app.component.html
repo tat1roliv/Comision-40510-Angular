@@ -1,14 +1,17 @@
 
-<mat-toolbar color="primary">
+<ng-container *ngIf="sesion$ | async as sesion">
+  <mat-toolbar color="primary" *ngIf="sesion.usuarioActivo">
     <span>My App</span>
     <span class="example-spacer"></span>
     <button mat-button (click)="redigirInicio()">Inicio</button>
     <a mat-button routerLink="cursos/listar">Listar Cursos</a>
     <!--a mat-button routerLink="cursos/tabla">Editar Cursos</!--a-->
-    <a mat-button routerLink="cursos/agregar">Agregar Curso</a>
+    <a mat-button routerLink="cursos/agregar" *ngIf="sesion.usuarioActivo?.esAdmin">Agregar Curso</a>
     <!--a mat-button routerLink="auth">Autenticacion</!--a-->
     <a mat-button (click)="logout()">Logout</a>
 </mat-toolbar>
+</ng-container>
+
 
 <router-outlet></router-outlet>
 
