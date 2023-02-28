@@ -28,4 +28,9 @@ export class SesionService {
   obtenerSesion(): Observable<Sesion>{
     return this.sesion$.asObservable();
   }
+
+  logout(sesion: Sesion){
+    this.sesion$.next(sesion)
+  }
+
 }
