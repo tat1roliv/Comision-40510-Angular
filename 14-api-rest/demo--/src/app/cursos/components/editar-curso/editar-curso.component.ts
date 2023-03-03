@@ -36,6 +36,7 @@ export class EditarCursoComponent implements OnInit {
 
   editarCurso(){
     let curso: Curso = {
+      id: '1',
       nombre: this.formulario.value.nombre,
       comision: this.formulario.value.comision,
       fechaInicio: this.formulario.value.fechaInicio,
@@ -44,7 +45,7 @@ export class EditarCursoComponent implements OnInit {
       profesor: {
         nombre: 'Abner',
         correo: 'abner@gmail.com',
-        fechaRegistro: new Date()
+        id: '1',
       }
     }
 

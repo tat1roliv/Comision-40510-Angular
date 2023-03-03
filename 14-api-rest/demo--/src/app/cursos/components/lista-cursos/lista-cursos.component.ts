@@ -39,7 +39,10 @@ export class ListaCursosComponent implements OnInit{
   }
 
   eliminarCurso(curso: Curso){
-    this.cursoService.eliminarCurso(curso);
+    this.cursoService.eliminarCurso(curso).subscribe((curso: Curso) => {
+      alert(`${curso.nombre} eliminado`);
+      this.cursos$ = this.cursoService.obtenerCursos();
+    } )
   }
 
   redirigirEditarCurso(curso: Curso){
