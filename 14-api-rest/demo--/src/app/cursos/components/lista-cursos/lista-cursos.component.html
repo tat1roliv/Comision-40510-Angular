@@ -17,7 +17,7 @@
               </mat-card-content>
               <mat-card-actions align="end">
                 <ng-container *ngIf="sesion$ | async as sesion">
-                  <button mat-raised-button color="primary" (click)="redirigirEditarCurso(curso)" *ngIf="sesion.usuarioActivo?.esAdmin">
+                  <button mat-raised-button color="primary" (click)="abrirDialog(curso)" *ngIf="sesion.usuarioActivo?.esAdmin">
                       Editar
                   </button>
                   <button mat-button color="warn" (click)="eliminarCurso(curso)" *ngIf="sesion.usuarioActivo?.esAdmin">

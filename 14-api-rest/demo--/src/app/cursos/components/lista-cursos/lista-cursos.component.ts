@@ -5,6 +5,8 @@ import { Curso } from 'src/app/models/curso';
 import { Sesion } from 'src/app/models/sesion';
 import { CursosService } from '../../services/cursos.service';
 import { SesionService } from '../../../core/services/sesion.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditarCursoComponent } from '../editar-curso/editar-curso.component';
 
 
 @Component({
@@ -21,7 +23,9 @@ export class ListaCursosComponent implements OnInit{
   constructor(
     private cursoService: CursosService,
     private router: Router,
-    private sesion: SesionService
+    private sesion: SesionService,
+    private dialog: MatDialog
+
   ){}
 
   ngOnInit() {
@@ -45,8 +49,18 @@ export class ListaCursosComponent implements OnInit{
     } )
   }
 
+//replaced
   redirigirEditarCurso(curso: Curso){
     this.router.navigate(['cursos/editar', curso]);
+  }
+
+  abrirDialog(curso: Curso){
+    this.dialog.open(EditarCursoComponent, {
+      data: curso
+    }).afterClosed().subscribe((curso: Curso) =>{
+      alert(`${curso.nombre} editado`);
+      this.cursos$ = this.cursoService.obtenerCursos();
+    })
   }
 
 

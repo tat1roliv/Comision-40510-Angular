@@ -35,7 +35,7 @@ export class CursosService {
   editarCurso(curso: Curso): Observable<Curso>{
     return this.http.put<Curso>(`${env.apiURL}/cursos/${curso.id}`, curso, {
       headers: new HttpHeaders({
-        'usuario': 'Abner'
+        'usuario': 'test'
       })
     }).pipe(
       catchError(this.capturarError)
@@ -45,7 +45,7 @@ export class CursosService {
   eliminarCurso(curso: Curso): Observable<Curso>{
     return this.http.delete<Curso>(`${env.apiURL}/cursos/${curso.id}`, {
       headers: new HttpHeaders({
-        'curso': 'Angular'
+        'curso': 'test'
       })
     }).pipe(
       catchError(this.capturarError)
