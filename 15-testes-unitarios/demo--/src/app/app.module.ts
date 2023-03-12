@@ -9,6 +9,9 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ListaTestComponent } from './lista-test/lista-test.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     CoreModule,
     ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
