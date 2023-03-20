@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
+import { ROOT_REDUCERS } from './core/state/app.state';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { StoreModule } from '@ngrx/store';
     SharedModule,
     AppRoutingModule,
     CoreModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot(ROOT_REDUCERS)
   ],
   providers: [],
   bootstrap: [AppComponent]

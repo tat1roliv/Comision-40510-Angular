@@ -7,6 +7,8 @@ import { CursosService } from '../../services/cursos.service';
 import { SesionService } from '../../../core/services/sesion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarCursoComponent } from '../editar-curso/editar-curso.component';
+import { AppState } from '../../../core/state/app.state';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -24,8 +26,8 @@ export class ListaCursosComponent implements OnInit{
     private cursoService: CursosService,
     private router: Router,
     private sesion: SesionService,
-    private dialog: MatDialog
-
+    private dialog: MatDialog,
+    private store: Store<AppState>
   ){}
 
   ngOnInit() {
