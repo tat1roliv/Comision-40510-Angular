@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarCursoComponent } from '../editar-curso/editar-curso.component';
 import { AppState } from '../../../core/state/app.state';
 import { Store } from '@ngrx/store';
+import { cargarCursos, cursosCargados } from 'src/app/core/state/cursos.actions';
+import { selectorCursosCargados } from 'src/app/core/state/cursos.selectors';
 
 
 @Component({
@@ -31,17 +33,17 @@ export class ListaCursosComponent implements OnInit{
   ){}
 
   ngOnInit() {
-    this.cursos$ = this.cursoService.obtenerCursos();
+
+    this.store.dispatch(cargarCursos());
+
+    //this.cursos$ = this.cursoService.obtenerCursos();
+    this.cursoService.obtenerCursos().subscribe((cursos: Curso[]) => {
+      this.store.dispatch(cursosCargados({ cursos: cursos }));
+    });
+    this.cursos$ = this.store.select(selectorCursosCargados);
 
     this.sesion$ = this.sesion.obtenerSesion();
-    /*
-    this.sesion.obtenerSesion().subscribe( (sesion: Sesion) => {
-      console.log('estado de la sesion', sesion );
-      if(!sesion.sesionActiva){
-        this.router.navigate(['/auth/login']);
-      }
-    });
-    */
+ 
   }
 
   eliminarCurso(curso: Curso){
