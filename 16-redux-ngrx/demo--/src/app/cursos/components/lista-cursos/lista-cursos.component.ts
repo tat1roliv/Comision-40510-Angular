@@ -10,7 +10,7 @@ import { EditarCursoComponent } from '../editar-curso/editar-curso.component';
 import { AppState } from '../../../core/state/app.state';
 import { Store } from '@ngrx/store';
 import { cargarCursos, cursosCargados } from 'src/app/core/state/cursos.actions';
-import { selectorCursosCargados } from 'src/app/core/state/cursos.selectors';
+import { selectorCargandoCursos, selectorCursosCargados } from 'src/app/core/state/cursos.selectors';
 
 
 @Component({
@@ -23,6 +23,7 @@ export class ListaCursosComponent implements OnInit{
   cursos!: Curso[];
   cursos$!: Observable<Curso[]>;
   sesion$!: Observable<Sesion>;
+  cargando$!: Observable<Boolean>;
 
   constructor(
     private cursoService: CursosService,
@@ -34,16 +35,17 @@ export class ListaCursosComponent implements OnInit{
 
   ngOnInit() {
 
+    this.cargando$ = this.store.select(selectorCargandoCursos);
+
     this.store.dispatch(cargarCursos());
 
-    //this.cursos$ = this.cursoService.obtenerCursos();
     this.cursoService.obtenerCursos().subscribe((cursos: Curso[]) => {
       this.store.dispatch(cursosCargados({ cursos: cursos }));
     });
     this.cursos$ = this.store.select(selectorCursosCargados);
 
     this.sesion$ = this.sesion.obtenerSesion();
- 
+
   }
 
   eliminarCurso(curso: Curso){
