@@ -9,6 +9,8 @@ import { CursosRoutingModule } from './cursos-routing.module';
 import { CursosService } from './services/cursos.service';
 //import { TablaCursosComponent } from './components/tabla-cursos/tabla-cursos.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EffectsModule } from '@ngrx/effects';
+import { CursoStateEffects } from './curso-state.effects';
 
 
 
@@ -24,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     CursosRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EffectsModule.forFeature([CursoStateEffects])
   ],
   providers: [
     CursosService
