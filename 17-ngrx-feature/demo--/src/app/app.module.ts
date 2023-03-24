@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { StoreModule } from '@ngrx/store';
-import { ROOT_REDUCERS } from './core/state/app.state';
+//import { ROOT_REDUCERS } from './core/state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -22,7 +22,8 @@ import { EffectsModule } from '@ngrx/effects';
     SharedModule,
     AppRoutingModule,
     CoreModule,
-    StoreModule.forRoot(ROOT_REDUCERS),
+    //StoreModule.forRoot(ROOT_REDUCERS),
+    StoreModule.forRoot({},{}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([])
   ],

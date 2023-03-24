@@ -7,10 +7,13 @@ import { CursosService } from '../../services/cursos.service';
 import { SesionService } from '../../../core/services/sesion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarCursoComponent } from '../editar-curso/editar-curso.component';
-import { AppState } from '../../../core/state/app.state';
 import { Store } from '@ngrx/store';
-import { cargarCursos, cursosCargados } from 'src/app/core/state/cursos.actions';
-import { selectorCargandoCursos, selectorCursosCargados } from 'src/app/core/state/cursos.selectors';
+//import { AppState } from '../../../core/state/app.state';
+//import { cargarCursos, cursosCargados } from 'src/app/core/state/cursos.actions';
+//import { selectorCargandoCursos, selectorCursosCargados } from 'src/app/core/state/cursos.selectors';
+import { selectCargandoCursos, selectCursosCargados } from '../../curso-state.selectors';
+import { cargarCursoState, cursosCargados } from '../../curso-state.actions';
+import { CursoState } from '../../curso-state.reducer';
 
 
 @Component({
@@ -30,19 +33,19 @@ export class ListaCursosComponent implements OnInit{
     private router: Router,
     private sesion: SesionService,
     private dialog: MatDialog,
-    private store: Store<AppState>
+    private store: Store<CursoState>
   ){}
 
   ngOnInit() {
 
-    this.cargando$ = this.store.select(selectorCargandoCursos);
+    this.cargando$ = this.store.select(selectCargandoCursos);
 
-    this.store.dispatch(cargarCursos());
+    this.store.dispatch(cargarCursoState());
 
     this.cursoService.obtenerCursos().subscribe((cursos: Curso[]) => {
       this.store.dispatch(cursosCargados({ cursos: cursos }));
     });
-    this.cursos$ = this.store.select(selectorCursosCargados);
+    this.cursos$ = this.store.select(selectCursosCargados);
 
     this.sesion$ = this.sesion.obtenerSesion();
 
