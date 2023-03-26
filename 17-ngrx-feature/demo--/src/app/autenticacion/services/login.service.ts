@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map, Observable } from 'rxjs';
 import { SesionService } from 'src/app/core/services/sesion.service';
 import { Sesion } from 'src/app/models/sesion';
+import { env } from 'src/enviroment/enviroment';
 import { Usuario } from '../../models/usuario';
 
 @Injectable({
@@ -9,17 +12,30 @@ import { Usuario } from '../../models/usuario';
 export class LoginService {
 
   constructor(
-    private sesion: SesionService
+    private sesion: SesionService,
+    private http: HttpClient
   ) { }
 
-  login(usuario: Usuario){
-    //localStorage.setItem('sesionActiva', JSON.stringify(usuario));
+  login(usuario: Usuario): Observable<Sesion>{
+    return this.http.get<Usuario[]>(`${env.authURL}/usuarios`).pipe(
+      map((usuarios: Usuario[]) => {
+        let usuarioValidado = usuarios.find((u: Usuario) => u.usuario === usuario.usuario && u.contrasena === usuario.contrasena);
 
-    let sesion: Sesion = {
-      sesionActiva: true,
-      usuarioActivo: usuario
-    }
+        if(usuarioValidado){
+          const sesion: Sesion = {
+            sesionActiva: true,
+            usuarioActivo: usuarioValidado
+          }
 
-    this.sesion.crearSesion(sesion)
+          return sesion
+        }else{
+          const sesion: Sesion = {
+            sesionActiva: false
+          }
+
+          return sesion
+        }
+      })
+    );
   }
 }
