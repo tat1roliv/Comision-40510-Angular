@@ -8,7 +8,7 @@ export const selectSesionState = createSelector(
   selectAuthState,
   (state) => state.sesion
 );
-/*
+
 export const selectSesionActiva = createSelector(
   selectAuthState,
   (state) => state.sesion.sesionActiva
@@ -18,4 +18,6 @@ export const selectUsuarioActivo = createSelector(
   selectAuthState,
   (state) => state.sesion.usuarioActivo
 );
-*/
+
+
+
