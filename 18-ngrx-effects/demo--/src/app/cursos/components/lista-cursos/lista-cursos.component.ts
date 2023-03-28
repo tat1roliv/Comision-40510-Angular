@@ -42,9 +42,12 @@ export class ListaCursosComponent implements OnInit{
 
     this.store.dispatch(cargarCursoState());
 
+    /*
     this.cursoService.obtenerCursos().subscribe((cursos: Curso[]) => {
       this.store.dispatch(cursosCargados({ cursos: cursos }));
     });
+    */
+
     this.cursos$ = this.store.select(selectCursosCargados);
 
     this.sesion$ = this.sesion.obtenerSesion();

@@ -1,22 +1,71 @@
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Injectable } from "@angular/core";
+//import { MatSnackBar } from "@angular/material/snack-bar";
+import { Router } from "@angular/router";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { concatMap, map } from "rxjs";
+import { Curso } from "src/app/models/curso";
+import { cargarCursoState, cursosCargados } from "./curso-state.actions";
+import { CursosService } from "./services/cursos.service";
 
-import { concatMap } from 'rxjs/operators';
-import { Observable, EMPTY } from 'rxjs';
-import * as CursoStateActions from './curso-state.actions';
 
 @Injectable()
-export class CursoStateEffects {
+export class CursosEffects{
 
+    cargarCursos$ = createEffect(() => {
+        return this.actions$.pipe( // Obs1
+            ofType(cargarCursoState),
+            concatMap(() => {
+                return this.cursos.obtenerCursos().pipe( // Obs2
+                    map((c: Curso[]) => cursosCargados({ cursos: c }))
+                )
+            })
+        )
+    });
+    /*
+    agregarCurso$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(agregarCursoState),
+            concatMap(({ curso }) => {
+                return this.cursos.agregarCurso(curso).pipe(
+                    map((curso: Curso) => {
+                        this.snackBar.open(`${curso.nombre} agregado satisfactoriamente`);
+                        this.router.navigate(['cursos/listar']);
+                        return cargarCursoState();
+                    })
+                )
+            })
+        );
+    });
+    elimninarCurso$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(eliminarCursoState),
+            concatMap(({ curso }) => {
+                return this.cursos.eliminarCurso(curso).pipe(
+                    map((curso: Curso) => {
+                        return cargarCursoState();
+                    })
+                )
+            })
+        )
+    });
 
-  cargarCursoState$ = createEffect(() => {
-    return this.actions$.pipe( 
-
-      ofType(CursoStateActions.cargarCursoState),
-      /** An EMPTY observable only emits completion. Replace with your own observable API request */
-      concatMap(() => EMPTY as Observable<{ type: string }>)
-    );
-  });
-
-  constructor(private actions$: Actions) {}
+    editarCurso$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(editarCursoState),
+            concatMap(({ curso }) => {
+                return this.cursos.editarCurso(curso).pipe(
+                    map((curso: Curso) => {
+                        return cargarCursoState();
+                    })
+                )
+            })
+        );
+    });
+*/
+    constructor(
+        private cursos: CursosService,
+        private actions$: Actions,
+        private router: Router,
+        //private snackBar: MatSnackBar
+    ){}
 }
