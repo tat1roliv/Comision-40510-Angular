@@ -8,10 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { authFeatureKey, reducer } from './state/auth.reducer';
 import { StoreModule } from '@ngrx/store';
-//import { EffectsModule } from '@ngrx/effects';
-//import { AuthEffects } from '../auth.effects';
-
-
+import { EffectsModule } from '@ngrx/effects';
+//import { AuthEffects } from './state/auth.effects';
 
 @NgModule({
   declarations: [
@@ -22,7 +20,8 @@ import { StoreModule } from '@ngrx/store';
     CommonModule,
     AutenticacionRoutingModule,
     SharedModule,
-    StoreModule.forFeature(authFeatureKey, reducer)
+    StoreModule.forFeature(authFeatureKey, reducer),
+    //EffectsModule.forFeature([AuthEffects]),
   ]
 })
 export class AutenticacionModule { }

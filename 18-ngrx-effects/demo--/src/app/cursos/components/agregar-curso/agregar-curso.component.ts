@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ProfesorService } from 'src/app/core/services/profesor.service';
 import { Curso } from 'src/app/models/curso';
+import { CursoState } from '../../curso-state.reducer';
 import { Profesor } from 'src/app/models/profesor';
+import { agregarCursoState } from '../../curso-state.actions';
 import { CursosService } from '../../services/cursos.service';
 
 @Component({
@@ -19,7 +22,8 @@ export class AgregarCursoComponent implements OnInit{
   constructor(
     private router: Router,
     private cursoService: CursosService,
-    private profesores: ProfesorService
+    private profesores: ProfesorService,
+    private store: Store<CursoState>
   ){}
 
   ngOnInit(): void {
@@ -46,10 +50,13 @@ export class AgregarCursoComponent implements OnInit{
       profesor: this.formulario.value.profesor
     }
 
+   
+    this.store.dispatch(agregarCursoState({ curso: curso }));
+    /*
     this.cursoService.agregarCurso(curso).subscribe((curso: Curso) => {
       alert(`${curso.nombre} agregado`)
       this.router.navigate(['cursos/listar']);
     })
-
+  */
   }
 }

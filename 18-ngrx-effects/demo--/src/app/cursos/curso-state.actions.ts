@@ -11,5 +11,20 @@ export const cursosCargados = createAction(
 );
 
 
+export const agregarCursoState = createAction(
+  '[CursoState] Agregar curso',
+  props<{ curso: Curso }>()
+);
+
+export const editarCursoState = createAction(
+  '[CursoState] Editar curso',
+  props<{ curso: Curso }>()
+);
+
+export const eliminarCursoState = createAction(
+  '[CursoState] Eliminar curso',
+  props<{ curso: Curso }>()
+);
+
 
 

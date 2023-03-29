@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-//import { MatSnackBar } from "@angular/material/snack-bar";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { concatMap, map } from "rxjs";
 import { Curso } from "src/app/models/curso";
-import { cargarCursoState, cursosCargados } from "./curso-state.actions";
+import { agregarCursoState, cargarCursoState, cursosCargados } from "./curso-state.actions";
 import { CursosService } from "./services/cursos.service";
 
 
@@ -21,14 +21,15 @@ export class CursosEffects{
             })
         )
     });
-    /*
+
     agregarCurso$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(agregarCursoState),
             concatMap(({ curso }) => {
                 return this.cursos.agregarCurso(curso).pipe(
                     map((curso: Curso) => {
-                        this.snackBar.open(`${curso.nombre} agregado satisfactoriamente`);
+                        this.snackBar.open(`${curso.nombre} agregado`);
+                        //alert(`${curso.nombre} agregado`)
                         this.router.navigate(['cursos/listar']);
                         return cargarCursoState();
                     })
@@ -36,6 +37,8 @@ export class CursosEffects{
             })
         );
     });
+
+    /*
     elimninarCurso$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(eliminarCursoState),
@@ -66,6 +69,6 @@ export class CursosEffects{
         private cursos: CursosService,
         private actions$: Actions,
         private router: Router,
-        //private snackBar: MatSnackBar
+        private snackBar: MatSnackBar
     ){}
 }

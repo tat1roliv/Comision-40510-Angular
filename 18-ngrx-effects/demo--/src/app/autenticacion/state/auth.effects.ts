@@ -10,9 +10,9 @@ export class AuthEffects {
 
 
   cargarAuths$ = createEffect(() => {
-    return this.actions$.pipe( 
+    return this.actions$.pipe(
 
-      ofType(AuthActions.cargarAuths),
+      ofType(AuthActions.cargarSesion),
       /** An EMPTY observable only emits completion. Replace with your own observable API request */
       concatMap(() => EMPTY as Observable<{ type: string }>)
     );

@@ -17,24 +17,37 @@ export const initialState: CursoState = {
 
 export const reducer = createReducer(
   initialState,
+
   on(CursoStateActions.cargarCursoState, (state) => {
     //return {...state, cargando: true};
     const nuevoEstado: CursoState = {
       cargando: true,
       cursos: state.cursos
   }
-
     return nuevoEstado
   }),
+
   on(CursoStateActions.cursosCargados, (state, { cursos }) => {
     //return {...state, cargando: false, cursos};
     const nuevoEstado: CursoState = {
       cargando: false,
       cursos: cursos
   }
-
   return nuevoEstado
+  }),
+
+  on(CursoStateActions.agregarCursoState, (state, { curso: Curso }) => {
+    return state;
+  }),
+
+  on(CursoStateActions.editarCursoState, (state, { curso: Curso }) => {
+    return state;
+  }),
+
+  on(CursoStateActions.eliminarCursoState, (state, { curso: Curso }) => {
+    return state;
   })
+
 );
 
 export const cursoStateFeature = createFeature({

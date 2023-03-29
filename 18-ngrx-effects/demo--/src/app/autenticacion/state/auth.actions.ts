@@ -5,8 +5,3 @@ export const cargarSesion = createAction(
   '[Auth] Cargar Sesion',
   props<{ sesion: Sesion }>()
 );
-
-
-
-
-

@@ -22,7 +22,7 @@ export class SesionGuard implements CanActivate, CanActivateChild, CanLoad {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this.authStore.select(selectSesionState).pipe(
       map((sesion: Sesion) => {
-        if(sesion.sesionActiva){
+        if(sesion.usuarioActivo){
           return true;
         }else{
           this.router.navigate(['auth/login']);
@@ -36,7 +36,7 @@ export class SesionGuard implements CanActivate, CanActivateChild, CanLoad {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.authStore.select(selectSesionState).pipe(
         map((sesion: Sesion) => {
-          if(sesion.sesionActiva){
+          if(sesion.usuarioActivo){
             return true;
           }else{
             this.router.navigate(['auth/login']);
@@ -50,7 +50,7 @@ export class SesionGuard implements CanActivate, CanActivateChild, CanLoad {
     segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       return this.authStore.select(selectSesionState).pipe(
         map((sesion: Sesion) => {
-          if(sesion.sesionActiva){
+          if(sesion.usuarioActivo){//sesionActiva
             return true;
           }else{
             this.router.navigate(['auth/login']);
