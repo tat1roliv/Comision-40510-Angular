@@ -12,7 +12,7 @@ import { Store } from '@ngrx/store';
 //import { cargarCursos, cursosCargados } from 'src/app/core/state/cursos.actions';
 //import { selectorCargandoCursos, selectorCursosCargados } from 'src/app/core/state/cursos.selectors';
 import { selectCargandoCursos, selectCursosCargados } from '../../curso-state.selectors';
-import { cargarCursoState, cursosCargados } from '../../curso-state.actions';
+import { cargarCursoState, cursosCargados, eliminarCursoState } from '../../curso-state.actions';
 import { CursoState } from '../../curso-state.reducer';
 
 
@@ -55,10 +55,16 @@ export class ListaCursosComponent implements OnInit{
   }
 
   eliminarCurso(curso: Curso){
+    alert(`${curso.nombre} eliminado`);
+    this.store.dispatch(eliminarCursoState({ curso }));
+
+    /*
     this.cursoService.eliminarCurso(curso).subscribe((curso: Curso) => {
       alert(`${curso.nombre} eliminado`);
       this.cursos$ = this.cursoService.obtenerCursos();
     } )
+    */
+
   }
 
 //replaced

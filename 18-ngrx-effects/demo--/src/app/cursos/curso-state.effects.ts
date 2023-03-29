@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { concatMap, map } from "rxjs";
 import { Curso } from "src/app/models/curso";
-import { agregarCursoState, cargarCursoState, cursosCargados } from "./curso-state.actions";
+import { agregarCursoState, cargarCursoState, cursosCargados, eliminarCursoState } from "./curso-state.actions";
 import { CursosService } from "./services/cursos.service";
 
 
@@ -38,20 +38,21 @@ export class CursosEffects{
         );
     });
 
-    /*
+
     elimninarCurso$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(eliminarCursoState),
             concatMap(({ curso }) => {
                 return this.cursos.eliminarCurso(curso).pipe(
                     map((curso: Curso) => {
-                        return cargarCursoState();
+                      //alert(`${curso.nombre} eliminado`);
+                      return cargarCursoState();
                     })
                 )
             })
         )
     });
-
+ /*
     editarCurso$ = createEffect(() => {
         return this.actions$.pipe(
             ofType(editarCursoState),
